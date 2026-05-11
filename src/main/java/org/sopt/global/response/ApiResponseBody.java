@@ -16,7 +16,7 @@ public record ApiResponseBody<T, M>(
     public static ApiResponseBody<Void, Void> ok(SuccessCode successCode) {
         return new ApiResponseBody<>(
             true,
-            successCode.getStatus(),
+            successCode.getStatus().value(),
             successCode.getMessage(),
             null,
             null,
@@ -27,7 +27,7 @@ public record ApiResponseBody<T, M>(
     public static <T> ApiResponseBody<T, Void> ok(SuccessCode successCode, T data) {
         return new ApiResponseBody<>(
             true,
-            successCode.getStatus(),
+            successCode.getStatus().value(),
             successCode.getMessage(),
             data,
             null,
@@ -38,7 +38,7 @@ public record ApiResponseBody<T, M>(
     public static <T> ApiResponseBody<T, Void> created(SuccessCode successCode, T data) {
         return new ApiResponseBody<>(
             true,
-            successCode.getStatus(),
+            successCode.getStatus().value(),
             successCode.getMessage(),
             data,
             null,
@@ -49,7 +49,7 @@ public record ApiResponseBody<T, M>(
     public static ApiResponseBody<Void, ErrorMeta> onFailure(ErrorCode errorCode, ErrorMeta errorMeta) {
         return new ApiResponseBody<>(
             false,
-            errorCode.getStatus(),
+            errorCode.getStatus().value(),
             errorCode.getMessage(),
             null,
             errorCode.getCode(),
@@ -64,16 +64,11 @@ public record ApiResponseBody<T, M>(
     ) {
         return new ApiResponseBody<>(
             false,
-            errorCode.getStatus(),
+            errorCode.getStatus().value(),
             message,
             null,
             errorCode.getCode(),
             errorMeta
         );
-    }
-
-    @Override
-    public T data() {
-        return data;
     }
 }

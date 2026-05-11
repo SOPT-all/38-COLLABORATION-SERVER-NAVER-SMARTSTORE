@@ -1,17 +1,18 @@
 package org.sopt.global.response;
 
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
 
 @Getter
 public enum SuccessCode {
 
-    OK(200, "요청이 성공했습니다."),
-    CREATED(201, "리소스가 생성되었습니다.");
+    OK(HttpStatus.OK, "요청이 성공했습니다."),
+    CREATED(HttpStatus.CREATED, "리소스가 생성되었습니다.");
 
-    private final int status;
+    private final HttpStatus status;
     private final String message;
 
-    SuccessCode(int status, String message) {
+    SuccessCode(HttpStatus status, String message) {
         this.status = status;
         this.message = message;
     }

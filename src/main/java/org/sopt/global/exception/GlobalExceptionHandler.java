@@ -3,7 +3,6 @@ package org.sopt.global.exception;
 import jakarta.servlet.http.HttpServletRequest;
 import org.sopt.global.response.ApiResponseBody;
 import org.sopt.global.response.ErrorMeta;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,30 +10,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiResponseBody<Void, ErrorMeta>> handleHttpMessageNotReadable(
         HttpMessageNotReadableException ex,
         HttpServletRequest request
     ) {
         System.err.println("HttpMessageNotReadableException: " + ex.getMessage());
-
-        Throwable rootCause = ex;
-        while (rootCause.getCause() != null) {
-            rootCause = rootCause.getCause();
-        }
-
-        if (rootCause instanceof BusinessException businessException) {
-            ErrorCode errorCode = businessException.getErrorCode();
-
-            return ResponseEntity
-                .status(errorCode.getStatus())
-                .body(ApiResponseBody.onFailure(errorCode, createErrorMeta(request)));
-        }
+        ErrorCode errorCode = ErrorCode.INVALID_MAPPING_PARAMETER;
 
         return ResponseEntity
-            .status(HttpStatus.BAD_REQUEST)
-            .body(ApiResponseBody.onFailure(ErrorCode.INVALID_MAPPING_PARAMETER, createErrorMeta(request)));
+            .status(errorCode.getStatus())
+            .body(ApiResponseBody.onFailure(errorCode, createErrorMeta(request)));
     }
 
     @ExceptionHandler(BusinessException.class)
