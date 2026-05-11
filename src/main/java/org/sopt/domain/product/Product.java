@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.sopt.domain.Category;
-import org.sopt.domain.Image;
 import org.sopt.domain.common.BaseTimeEntity;
 
 import java.util.ArrayList;

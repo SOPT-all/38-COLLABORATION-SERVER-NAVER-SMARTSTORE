@@ -1,11 +1,10 @@
-package org.sopt.domain;
+package org.sopt.domain.product;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.sopt.domain.common.BaseTimeEntity;
-import org.sopt.domain.product.Product;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
