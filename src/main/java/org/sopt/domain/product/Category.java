@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import org.sopt.domain.common.BaseTimeEntity;
 import org.sopt.domain.product.type.CategoryName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -21,8 +18,4 @@ public class Category extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private CategoryName name;
-
-    @OneToMany(mappedBy = "category")
-    private List<Product> products = new ArrayList<>();
-
 }

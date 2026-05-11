@@ -21,8 +21,8 @@ public class Image extends BaseTimeEntity {
 
     private int imageOrder;
 
-    @Column(columnDefinition = "boolean default false")
-    private boolean isRepresentative;
+    @Column(nullable = false)
+    private boolean isRepresentative = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")

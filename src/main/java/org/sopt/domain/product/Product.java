@@ -24,7 +24,7 @@ public class Product extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    Category category;
+    private Category category;
 
     @OneToMany(mappedBy = "product")
     private List<Image> images = new ArrayList<>();
