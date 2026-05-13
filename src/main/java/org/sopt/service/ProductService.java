@@ -42,7 +42,7 @@ public class ProductService {
           .imageUrl(imageRequest.imageUrl())
           .contentType(imageRequest.contentType())
           .imageOrder(imageRequest.imageOrder())
-          .isRepresentative(imageRequest.isRepresentative())
+          .representative(imageRequest.isRepresentative())
           .build();
 
       product.addImage(image);

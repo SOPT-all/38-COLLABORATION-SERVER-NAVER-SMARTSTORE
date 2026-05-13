@@ -25,19 +25,19 @@ public class Image extends BaseTimeEntity {
     @Column(nullable = false)
     private int imageOrder;
 
-    @Column(nullable = false)
-    private boolean isRepresentative = false;
+    @Column(name = "is_representative", nullable = false)
+    private boolean representative = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @Builder
-    private Image(String imageUrl, String contentType, int imageOrder, boolean isRepresentative) {
+    private Image(String imageUrl, String contentType, int imageOrder, boolean representative) {
         this.imageUrl = imageUrl;
         this.contentType = contentType;
         this.imageOrder = imageOrder;
-        this.isRepresentative = isRepresentative;
+        this.representative = representative;
     }
 
     void assignProduct(Product product) {
