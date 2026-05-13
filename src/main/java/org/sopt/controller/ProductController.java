@@ -11,7 +11,6 @@ import org.sopt.dto.response.ProductCreateResponse;
 import org.sopt.global.response.ApiResponseBody;
 import org.sopt.global.response.SuccessCode;
 import org.sopt.service.ProductService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +38,7 @@ public class ProductController {
     ProductCreateResponse response = productService.createProduct(request);
 
     return ResponseEntity
-        .status(HttpStatus.CREATED)
+        .status(SuccessCode.PRODUCT_CREATED.getStatus())
         .body(ApiResponseBody.created(SuccessCode.PRODUCT_CREATED, response));
   }
 
