@@ -8,16 +8,14 @@ public record NoticeResponse (
     Long id,
     String NoticeType,
     String title,
-    LocalDateTime createdAt,
-    LocalDateTime updatedAt
+    LocalDateTime createdAt
 ){
     public static NoticeResponse from(Notice notice){
         return new NoticeResponse(
                 notice.getId(),
                 notice.getNoticeType(),
                 notice.getTitle(),
-                notice.getCreatedAt(),
-                notice.getUpdatedAt()
+                notice.getCreatedAt()
         );
     }
 }
