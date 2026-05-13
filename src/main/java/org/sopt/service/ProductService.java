@@ -61,11 +61,14 @@ public class ProductService {
   }
 
   private void validateRepresentativeImage(List<ProductImageCreateRequest> images) {
-    boolean hasRepresentativeImage = images.stream()
-        .anyMatch(image -> Boolean.TRUE.equals(image.isRepresentative()));
+    long representativeCount = images.stream()
+        .filter(image -> image.isRepresentative())
+        .count();
 
-    if (!hasRepresentativeImage) {
+    if (representativeCount == 0) {
       throw new BusinessException(ErrorCode.REPRESENTATIVE_IMAGE_REQUIRED);
+    } else if (representativeCount > 1) {
+      throw new BusinessException(ErrorCode.MULTIPLE_REPRESENTATIVE_IMAGES);
     }
   }
 

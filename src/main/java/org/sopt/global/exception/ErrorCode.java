@@ -15,6 +15,7 @@ public enum ErrorCode {
     INVALID_MAPPING_PARAMETER(HttpStatus.BAD_REQUEST, "COM_007", "매핑할 수 없는 값입니다."),
     REPRESENTATIVE_IMAGE_REQUIRED(HttpStatus.BAD_REQUEST, "IMG_002", "대표 이미지가 필요합니다."),
     INVALID_SIZE(HttpStatus.BAD_REQUEST, "COM_008", "잘못된 크기입니다."),
+    MULTIPLE_REPRESENTATIVE_IMAGES(HttpStatus.BAD_REQUEST, "IMG_003", "대표 이미지는 하나만 허용됩니다."),
 
     // 404 NOT FOUND
     RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "COM_003", "존재하지 않는 리소스입니다."),
