@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: smartstore
@@ -11,16 +14,24 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
-    show-sql: true
+        highlight_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
     defer-datasource-initialization: true
 
   sql:
     init:
       mode: always
+
+  springdoc:
+    swagger-ui:
+      path: /swagger-ui.html
+    api-docs:
+      path: /v3/api-docs
 
   flyway:
     enabled: true
