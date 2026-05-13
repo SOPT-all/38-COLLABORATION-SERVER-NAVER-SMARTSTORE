@@ -1,6 +1,6 @@
 spring:
   application:
-    name: NaverSmartStore
+    name: smartstore
 
   datasource:
     url: ${DB_URL}
@@ -21,3 +21,8 @@ spring:
   sql:
     init:
       mode: always
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true  # 기존 DB가 있을 때 충돌 방지
+    locations: classpath:db/migration
