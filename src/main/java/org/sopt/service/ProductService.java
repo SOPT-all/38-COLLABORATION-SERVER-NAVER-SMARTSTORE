@@ -17,12 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class ProductService {
 
   private final ProductRepository productRepository;
   private final CategoryRepository categoryRepository;
 
+  @Transactional
   public ProductCreateResponse createProduct(ProductCreateRequest request) {
     Category category = categoryRepository.findById(request.categoryId())
         .orElseThrow(() -> new BusinessException(ErrorCode.CATEGORY_NOT_FOUND));
