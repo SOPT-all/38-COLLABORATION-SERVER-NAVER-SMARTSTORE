@@ -2,6 +2,7 @@ package org.sopt.domain.product;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.sopt.domain.common.BaseTimeEntity;
@@ -15,17 +16,31 @@ public class Image extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String imageUrl;
 
+    @Column(nullable = false)
     private String contentType;
 
+    @Column(nullable = false)
     private int imageOrder;
 
     @Column(nullable = false)
     private boolean isRepresentative = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @Builder
+    private Image(String imageUrl, String contentType, int imageOrder, boolean isRepresentative) {
+        this.imageUrl = imageUrl;
+        this.contentType = contentType;
+        this.imageOrder = imageOrder;
+        this.isRepresentative = isRepresentative;
+    }
+
+    void assignProduct(Product product) {
+        this.product = product;
+    }
 }
