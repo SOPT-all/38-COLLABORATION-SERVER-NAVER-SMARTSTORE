@@ -9,7 +9,7 @@ public enum SuccessCode {
     OK(HttpStatus.OK, "요청이 성공했습니다."),
     CREATED(HttpStatus.CREATED, "리소스가 생성되었습니다."),
 
-    // Product 관련
+    // =================== PRODUCT ===================
     PRODUCT_CREATED(HttpStatus.CREATED, "상품 등록에 성공했습니다.");
 
     private final HttpStatus status;
