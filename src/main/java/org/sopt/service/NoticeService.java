@@ -1,8 +1,8 @@
-package org.sopt.domain.notice.service;
+package org.sopt.service;
 
 import lombok.RequiredArgsConstructor;
-import org.sopt.domain.notice.dto.response.NoticeResponse;
-import org.sopt.domain.notice.repository.NoticeRepository;
+import org.sopt.dto.response.NoticeResponse;
+import org.sopt.repository.NoticeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

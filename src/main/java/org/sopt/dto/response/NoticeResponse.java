@@ -1,4 +1,4 @@
-package org.sopt.domain.notice.dto.response;
+package org.sopt.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.sopt.domain.notice.Notice;

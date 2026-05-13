@@ -1,10 +1,9 @@
-package org.sopt.domain.notice.controller;
+package org.sopt.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.sopt.domain.notice.service.NoticeService;
+import org.sopt.service.NoticeService;
 import org.sopt.global.response.ApiResponseBody;
 import org.sopt.global.response.SuccessCode;
 import org.springframework.http.ResponseEntity;
