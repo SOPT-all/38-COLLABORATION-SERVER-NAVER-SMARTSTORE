@@ -9,6 +9,7 @@ import org.sopt.domain.product.Product;
 import org.sopt.dto.request.ProductCreateRequest;
 import org.sopt.dto.request.ProductImageCreateRequest;
 import org.sopt.dto.response.ProductCreateResponse;
+import org.sopt.dto.response.ProductGetResponse;
 import org.sopt.global.exception.BusinessException;
 import org.sopt.global.exception.ErrorCode;
 import org.sopt.repository.CategoryRepository;
@@ -52,6 +53,13 @@ public class ProductService {
 
     Product savedProduct = productRepository.save(product);
     return ProductCreateResponse.from(savedProduct);
+  }
+
+  public ProductGetResponse getProduct(Long productId) {
+    Product product = productRepository.findById(productId)
+        .orElseThrow(() -> new BusinessException(ErrorCode.PRODUCT_NOT_FOUND));
+
+    return ProductGetResponse.from(product);
   }
 
   private int parsePrice(Object price) {
