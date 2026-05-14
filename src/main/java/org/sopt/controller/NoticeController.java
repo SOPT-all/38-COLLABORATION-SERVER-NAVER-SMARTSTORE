@@ -34,10 +34,6 @@ public class NoticeController {
           description = "공지사항 전체 조회 성공"
       ),
       @ApiResponse(
-          responseCode = "404",
-          description = "공지사항을 찾을 수 없음"
-      ),
-      @ApiResponse(
           responseCode = "500",
           description = "서버 내부 오류"
       )
