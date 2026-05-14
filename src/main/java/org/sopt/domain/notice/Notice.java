@@ -11,12 +11,12 @@ import org.sopt.domain.common.BaseTimeEntity;
 @Entity
 public class Notice extends BaseTimeEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(name = "notice_type")
-    private String noticeType;
+  @Column(name = "notice_type")
+  private String noticeType;
 
-    private String title;
+  private String title;
 }

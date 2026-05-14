@@ -12,12 +12,12 @@ import java.util.List;
 @Service
 public class NoticeService {
 
-    private final NoticeRepository noticeRepository;
+  private final NoticeRepository noticeRepository;
 
-    @Transactional(readOnly = true)
-    public List<NoticeResponse> getAllNotices(){
-        return noticeRepository.findAll().stream()
-                .map(NoticeResponse::from)
-                .toList();
-    }
+  @Transactional(readOnly = true)
+  public List<NoticeResponse> getAllNotices() {
+    return noticeRepository.findAll().stream()
+        .map(NoticeResponse::from)
+        .toList();
+  }
 }

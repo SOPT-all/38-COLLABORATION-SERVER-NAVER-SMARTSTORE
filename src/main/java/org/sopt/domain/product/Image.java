@@ -12,35 +12,35 @@ import org.sopt.domain.common.BaseTimeEntity;
 @Entity
 public class Image extends BaseTimeEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(nullable = false)
-    private String imageUrl;
+  @Column(nullable = false)
+  private String imageUrl;
 
-    @Column(nullable = false)
-    private String contentType;
+  @Column(nullable = false)
+  private String contentType;
 
-    @Column(nullable = false)
-    private int imageOrder;
+  @Column(nullable = false)
+  private int imageOrder;
 
-    @Column(name = "is_representative", nullable = false)
-    private boolean representative = false;
+  @Column(name = "is_representative", nullable = false)
+  private boolean representative = false;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "product_id", nullable = false)
+  private Product product;
 
-    @Builder
-    private Image(String imageUrl, String contentType, int imageOrder, boolean representative) {
-        this.imageUrl = imageUrl;
-        this.contentType = contentType;
-        this.imageOrder = imageOrder;
-        this.representative = representative;
-    }
+  @Builder
+  private Image(String imageUrl, String contentType, int imageOrder, boolean representative) {
+    this.imageUrl = imageUrl;
+    this.contentType = contentType;
+    this.imageOrder = imageOrder;
+    this.representative = representative;
+  }
 
-    void assignProduct(Product product) {
-        this.product = product;
-    }
+  void assignProduct(Product product) {
+    this.product = product;
+  }
 }

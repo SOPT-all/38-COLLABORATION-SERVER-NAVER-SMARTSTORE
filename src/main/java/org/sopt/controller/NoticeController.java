@@ -22,33 +22,33 @@ import java.util.List;
 @RequestMapping("/api/notices")
 public class NoticeController {
 
-    private final NoticeService noticeService;
+  private final NoticeService noticeService;
 
-    @Operation(
-            summary = "공지사항 전체 조회",
-            description = "전체 공지사항 목록을 조회합니다."
-    )
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "공지사항 전체 조회 성공"
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "공지사항을 찾을 수 없음"
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "서버 내부 오류"
+  @Operation(
+      summary = "공지사항 전체 조회",
+      description = "전체 공지사항 목록을 조회합니다."
+  )
+  @ApiResponses({
+      @ApiResponse(
+          responseCode = "200",
+          description = "공지사항 전체 조회 성공"
+      ),
+      @ApiResponse(
+          responseCode = "404",
+          description = "공지사항을 찾을 수 없음"
+      ),
+      @ApiResponse(
+          responseCode = "500",
+          description = "서버 내부 오류"
+      )
+  })
+  @GetMapping
+  public ResponseEntity<ApiResponseBody<List<NoticeResponse>, Void>> getAllNotices() {
+    return ResponseEntity.status(SuccessCode.OK.getStatus())
+        .body(
+            ApiResponseBody.ok(
+                SuccessCode.OK, noticeService.getAllNotices()
             )
-    })
-    @GetMapping
-    public ResponseEntity<ApiResponseBody<List<NoticeResponse>, Void>> getAllNotices(){
-        return ResponseEntity.status(SuccessCode.OK.getStatus())
-                .body(
-                        ApiResponseBody.ok(
-                                SuccessCode.OK, noticeService.getAllNotices()
-                        )
-                );
-    }
+        );
+  }
 }

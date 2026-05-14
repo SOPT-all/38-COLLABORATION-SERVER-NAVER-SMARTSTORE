@@ -2,6 +2,7 @@ package org.sopt.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 import lombok.Builder;
 import org.sopt.domain.product.Product;
 
@@ -13,7 +14,7 @@ public record ProductCreateResponse(
     int price,
     List<ProductImageResponse> images,
     LocalDateTime createdAt
-){
+) {
   public static ProductCreateResponse from(Product product) {
     return ProductCreateResponse.builder()
         .id(product.getId())
