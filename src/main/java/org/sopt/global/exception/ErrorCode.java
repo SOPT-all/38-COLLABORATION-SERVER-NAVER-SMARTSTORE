@@ -33,6 +33,7 @@ public enum ErrorCode {
   // 400 BAD REQUEST
   REPRESENTATIVE_IMAGE_REQUIRED(HttpStatus.BAD_REQUEST, "IMG_002", "대표 이미지가 필요합니다."),
   MULTIPLE_REPRESENTATIVE_IMAGES(HttpStatus.BAD_REQUEST, "IMG_003", "대표 이미지는 하나만 허용됩니다."),
+  UNSUPPORTED_MIME_TYPE(HttpStatus.BAD_REQUEST, "IMG_004", "지원하지 않는 이미지 형식입니다."),
 
   // 404 NOT FOUND
   IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "IMG_001", "존재하지 않는 이미지입니다."),
