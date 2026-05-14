@@ -18,6 +18,6 @@ public enum SuccessCode {
 
   SuccessCode(HttpStatus status, String message) {
     this.status = status;
-      this.message = message;
+    this.message = message;
   }
 }
