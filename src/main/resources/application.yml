@@ -13,7 +13,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
@@ -22,8 +22,13 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
     open-in-view: false
 
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-  api-docs:
-    path: /v3/api-docs
+  springdoc:
+    swagger-ui:
+      path: /swagger-ui.html
+    api-docs:
+      path: /v3/api-docs
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true  # 기존 DB가 있을 때 충돌 방지
+    locations: classpath:db/migration

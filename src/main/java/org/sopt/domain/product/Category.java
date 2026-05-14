@@ -12,10 +12,10 @@ import org.sopt.domain.product.type.CategoryName;
 @Entity
 public class Category extends BaseTimeEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private CategoryName name;
+  @Enumerated(EnumType.STRING)
+  private CategoryName name;
 }

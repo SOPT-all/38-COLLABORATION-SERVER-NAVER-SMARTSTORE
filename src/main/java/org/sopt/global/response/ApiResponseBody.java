@@ -13,62 +13,62 @@ public record ApiResponseBody<T, M>(
     M meta
 ) {
 
-    public static ApiResponseBody<Void, Void> ok(SuccessCode successCode) {
-        return new ApiResponseBody<>(
-            true,
-            successCode.getStatus().value(),
-            successCode.getMessage(),
-            null,
-            null,
-            null
-        );
-    }
+  public static ApiResponseBody<Void, Void> ok(SuccessCode successCode) {
+    return new ApiResponseBody<>(
+        true,
+        successCode.getStatus().value(),
+        successCode.getMessage(),
+        null,
+        null,
+        null
+    );
+  }
 
-    public static <T> ApiResponseBody<T, Void> ok(SuccessCode successCode, T data) {
-        return new ApiResponseBody<>(
-            true,
-            successCode.getStatus().value(),
-            successCode.getMessage(),
-            data,
-            null,
-            null
-        );
-    }
+  public static <T> ApiResponseBody<T, Void> ok(SuccessCode successCode, T data) {
+    return new ApiResponseBody<>(
+        true,
+        successCode.getStatus().value(),
+        successCode.getMessage(),
+        data,
+        null,
+        null
+    );
+  }
 
-    public static <T> ApiResponseBody<T, Void> created(SuccessCode successCode, T data) {
-        return new ApiResponseBody<>(
-            true,
-            successCode.getStatus().value(),
-            successCode.getMessage(),
-            data,
-            null,
-            null
-        );
-    }
+  public static <T> ApiResponseBody<T, Void> created(SuccessCode successCode, T data) {
+    return new ApiResponseBody<>(
+        true,
+        successCode.getStatus().value(),
+        successCode.getMessage(),
+        data,
+        null,
+        null
+    );
+  }
 
-    public static ApiResponseBody<Void, ErrorMeta> onFailure(ErrorCode errorCode, ErrorMeta errorMeta) {
-        return new ApiResponseBody<>(
-            false,
-            errorCode.getStatus().value(),
-            errorCode.getMessage(),
-            null,
-            errorCode.getCode(),
-            errorMeta
-        );
-    }
+  public static ApiResponseBody<Void, ErrorMeta> onFailure(ErrorCode errorCode, ErrorMeta errorMeta) {
+    return new ApiResponseBody<>(
+        false,
+        errorCode.getStatus().value(),
+        errorCode.getMessage(),
+        null,
+        errorCode.getCode(),
+        errorMeta
+    );
+  }
 
-    public static ApiResponseBody<Void, ErrorMeta> onFailure(
-        ErrorCode errorCode,
-        String message,
-        ErrorMeta errorMeta
-    ) {
-        return new ApiResponseBody<>(
-            false,
-            errorCode.getStatus().value(),
-            message,
-            null,
-            errorCode.getCode(),
-            errorMeta
-        );
-    }
+  public static ApiResponseBody<Void, ErrorMeta> onFailure(
+      ErrorCode errorCode,
+      String message,
+      ErrorMeta errorMeta
+  ) {
+    return new ApiResponseBody<>(
+        false,
+        errorCode.getStatus().value(),
+        message,
+        null,
+        errorCode.getCode(),
+        errorMeta
+    );
+  }
 }
