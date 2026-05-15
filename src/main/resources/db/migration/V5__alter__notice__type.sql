@@ -1,3 +1,7 @@
+UPDATE notice
+SET notice_type = 'SYSTEM'
+WHERE notice_type = '시스템';
+
 ALTER TABLE notice
 MODIFY COLUMN notice_type ENUM(
     'GENERAL',
@@ -9,7 +13,3 @@ MODIFY COLUMN notice_type ENUM(
     'HAZARD_INFO',
     'MANUAL'
 );
-
-UPDATE notice
-SET notice_type = 'SYSTEM'
-WHERE notice_type = '시스템';
