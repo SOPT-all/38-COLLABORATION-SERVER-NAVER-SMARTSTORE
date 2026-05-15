@@ -68,4 +68,16 @@ public class S3Service {
         EXPIRES_IN
     );
   }
+
+  public void validateIssuedS3Url(String imageUrl, String contentType) {
+    String expectedPrefix = "https://" + bucket + ".s3." + region + ".amazonaws.com/products/";
+
+    if (!imageUrl.startsWith(expectedPrefix)) {
+      throw new BusinessException(ErrorCode.INVALID_IMAGE_URL);
+    }
+
+    if (!ALLOWED_TYPES.contains(contentType)) {
+      throw new BusinessException(ErrorCode.UNSUPPORTED_MIME_TYPE);
+    }
+  }
 }
