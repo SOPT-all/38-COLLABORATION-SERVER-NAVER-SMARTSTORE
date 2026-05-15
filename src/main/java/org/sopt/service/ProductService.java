@@ -30,7 +30,7 @@ public class ProductService {
     Category category = categoryRepository.findById(request.categoryId())
         .orElseThrow(() -> new BusinessException(ErrorCode.CATEGORY_NOT_FOUND));
 
-    int price = parsePrice(request.price());
+    int price = request.price();
 
     validateRepresentativeImage(request.images());
 
@@ -60,14 +60,6 @@ public class ProductService {
         .orElseThrow(() -> new BusinessException(ErrorCode.PRODUCT_NOT_FOUND));
 
     return ProductGetResponse.from(product);
-  }
-
-  private int parsePrice(Object price) {
-    try {
-      return Integer.parseInt(price.toString());
-    } catch (NumberFormatException e) {
-      throw new BusinessException(ErrorCode.INVALID_NUMBER_FORMAT);
-    }
   }
 
   private void validateRepresentativeImage(List<ProductImageCreateRequest> images) {
