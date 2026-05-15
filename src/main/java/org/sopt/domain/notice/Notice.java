@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.sopt.domain.common.BaseTimeEntity;
+import org.sopt.domain.notice.type.NoticeType;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -15,8 +16,9 @@ public class Notice extends BaseTimeEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Enumerated(EnumType.STRING)
   @Column(name = "notice_type")
-  private String noticeType;
+  private NoticeType noticeType;
 
   private String title;
 }

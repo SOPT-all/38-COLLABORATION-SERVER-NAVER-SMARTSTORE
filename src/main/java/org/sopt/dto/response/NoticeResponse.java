@@ -5,6 +5,7 @@ import lombok.Builder;
 import org.sopt.domain.notice.Notice;
 
 import java.time.LocalDateTime;
+import org.sopt.domain.notice.type.NoticeType;
 
 @Builder
 @Schema(description = "공지사항 응답 DTO")
@@ -13,7 +14,7 @@ public record NoticeResponse(
     Long id,
 
     @Schema(description = "공지사항 타입")
-    String noticeType,
+    NoticeType noticeType,
 
     @Schema(description = "공지사항 제목")
     String title,
