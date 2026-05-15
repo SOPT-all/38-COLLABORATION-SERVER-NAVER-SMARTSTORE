@@ -1,5 +1,5 @@
 server:
-    port: 8080
+  port: 8080
 
 spring:
   application:
@@ -32,3 +32,13 @@ spring:
     enabled: true
     baseline-on-migrate: true  # 기존 DB가 있을 때 충돌 방지
     locations: classpath:db/migration
+
+  cloud:
+    aws:
+      s3:
+        bucket: ${S3_BUCKET_NAME}
+      region:
+        static: ap-northeast-2
+      credentials:
+        access-key: ${AWS_ACCESS_KEY}
+        secret-key: ${AWS_SECRET_KEY}

@@ -86,6 +86,13 @@ public class GlobalExceptionHandler {
       return ErrorCode.INVALID_SIZE;
     }
 
+    boolean hasPositiveError = e.getBindingResult().getFieldErrors().stream()
+        .anyMatch(error -> "Positive".equals(error.getCode()));
+
+    if (hasPositiveError) {
+      return ErrorCode.INVALID_SIZE;
+    }
+
     return ErrorCode.INVALID_NULL_DATA;
   }
 }
