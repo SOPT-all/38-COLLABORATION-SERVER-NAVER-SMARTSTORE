@@ -11,7 +11,13 @@ public enum SuccessCode {
 
   // =================== PRODUCT ===================
   PRODUCT_FOUND(HttpStatus.OK, "상품 조회에 성공했습니다."),
-  PRODUCT_CREATED(HttpStatus.CREATED, "상품 등록에 성공했습니다.");
+  PRODUCT_CREATED(HttpStatus.CREATED, "상품 등록에 성공했습니다."),
+
+  // =================== CATEGORY ===================
+  CATEGORY_SEARCH_SUCCESS(HttpStatus.OK, "카테고리 검색에 성공했습니다."),
+
+  // =================== IMAGE ===================
+  PRESIGNED_URL_SUCCESS(HttpStatus.OK, "Presigned URL 발급에 성공했습니다.");
 
   private final HttpStatus status;
   private final String message;
