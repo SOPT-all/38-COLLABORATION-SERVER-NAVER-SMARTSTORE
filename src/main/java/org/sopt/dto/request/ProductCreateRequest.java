@@ -23,7 +23,7 @@ public record ProductCreateRequest(
 
     @Schema(description = "판매가", example = "92000")
     @NotNull
-    Object price,
+    Integer price,
 
     @Schema(description = "상품 이미지 목록")
     @NotEmpty
