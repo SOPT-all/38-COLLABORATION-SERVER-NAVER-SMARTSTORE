@@ -27,6 +27,7 @@ public class S3Service {
   private String region;
 
   private static final int EXPIRES_IN = 300;
+  private static final long MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
   private static final Set<String> ALLOWED_TYPES = Set.of(
       "image/png", "image/jpeg", "image/webp"
   );
@@ -36,6 +37,11 @@ public class S3Service {
     // 지원하지 않는 MIME 타입 검증
     if (!ALLOWED_TYPES.contains(request.contentType())) {
       throw new BusinessException(ErrorCode.UNSUPPORTED_MIME_TYPE);
+    }
+
+    // 파일 크기 검증 (클라이언트 제공 값 기반, 5MB 초과 시 거부)
+    if (request.fileSize() > MAX_FILE_SIZE) {
+      throw new BusinessException(ErrorCode.FILE_SIZE_EXCEEDED);
     }
 
     // S3 저장 경로: products/{uuid}-{원본파일명}
