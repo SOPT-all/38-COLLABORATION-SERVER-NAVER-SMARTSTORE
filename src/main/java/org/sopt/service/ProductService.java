@@ -24,6 +24,7 @@ public class ProductService {
 
   private final ProductRepository productRepository;
   private final CategoryRepository categoryRepository;
+  private final S3Service s3Service;
 
   @Transactional
   public ProductCreateResponse createProduct(ProductCreateRequest request) {
@@ -33,6 +34,7 @@ public class ProductService {
     int price = request.price();
 
     validateRepresentativeImage(request.images());
+    validateIssuedS3Images(request.images());
 
     Product product = Product.builder()
         .name(request.name())
@@ -72,6 +74,10 @@ public class ProductService {
     } else if (representativeCount > 1) {
       throw new BusinessException(ErrorCode.MULTIPLE_REPRESENTATIVE_IMAGES);
     }
+  }
+
+  private void validateIssuedS3Images(List<ProductImageCreateRequest> images) {
+    images.forEach(image -> s3Service.validateIssuedS3Url(image.imageUrl(), image.contentType()));
   }
 
 }

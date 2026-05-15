@@ -25,8 +25,9 @@ public record ProductCreateRequest(
     @NotNull
     Integer price,
 
-    @Schema(description = "상품 이미지 목록")
+    @Schema(description = "상품 이미지 목록", maxLength = 3)
     @NotEmpty
+    @Size(max = 3)
     List<@Valid ProductImageCreateRequest> images
 ) {
 }
