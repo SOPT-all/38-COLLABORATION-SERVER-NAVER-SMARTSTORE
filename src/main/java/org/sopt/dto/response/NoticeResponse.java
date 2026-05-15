@@ -1,10 +1,12 @@
 package org.sopt.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import org.sopt.domain.notice.Notice;
 
 import java.time.LocalDateTime;
 
+@Builder
 @Schema(description = "공지사항 응답 DTO")
 public record NoticeResponse(
     @Schema(description = "공지사항 ID")
@@ -20,11 +22,11 @@ public record NoticeResponse(
     LocalDateTime createdAt
 ) {
   public static NoticeResponse from(Notice notice) {
-    return new NoticeResponse(
-        notice.getId(),
-        notice.getNoticeType(),
-        notice.getTitle(),
-        notice.getCreatedAt()
-    );
+    return NoticeResponse.builder()
+        .id(notice.getId())
+        .noticeType(notice.getNoticeType())
+        .title(notice.getTitle())
+        .createdAt(notice.getCreatedAt())
+        .build();
   }
 }
