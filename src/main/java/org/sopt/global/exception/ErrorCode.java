@@ -35,6 +35,7 @@ public enum ErrorCode {
   MULTIPLE_REPRESENTATIVE_IMAGES(HttpStatus.BAD_REQUEST, "IMG_003", "대표 이미지는 하나만 허용됩니다."),
   UNSUPPORTED_MIME_TYPE(HttpStatus.BAD_REQUEST, "IMG_004", "지원하지 않는 이미지 형식입니다."),
   FILE_SIZE_EXCEEDED(HttpStatus.BAD_REQUEST, "IMG_005", "파일 크기는 5MB를 초과할 수 없습니다."),
+  INVALID_IMAGE_URL(HttpStatus.BAD_REQUEST, "IMG_006", "유효하지 않은 이미지 URL입니다."),
 
   // 404 NOT FOUND
   IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "IMG_001", "존재하지 않는 이미지입니다."),
