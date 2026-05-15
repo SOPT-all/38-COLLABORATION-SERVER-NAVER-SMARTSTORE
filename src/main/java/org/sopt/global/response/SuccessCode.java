@@ -10,7 +10,10 @@ public enum SuccessCode {
   CREATED(HttpStatus.CREATED, "리소스가 생성되었습니다."),
 
   // =================== PRODUCT ===================
-  PRODUCT_CREATED(HttpStatus.CREATED, "상품 등록에 성공했습니다.");
+  PRODUCT_CREATED(HttpStatus.CREATED, "상품 등록에 성공했습니다."),
+
+  // =================== CATEGORY ===================
+  CATEGORY_SEARCH_SUCCESS(HttpStatus.OK, "카테고리 검색에 성공했습니다.");
 
   private final HttpStatus status;
   private final String message;
