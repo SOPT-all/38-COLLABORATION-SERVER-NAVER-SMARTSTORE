@@ -1,6 +1,7 @@
 ALTER TABLE notice
 MODIFY COLUMN notice_type ENUM(
     'GENERAL',
+    'SYSTEM',
     'DELIVERY',
     'SAFE_TRADE',
     'SELLING_TIP',
