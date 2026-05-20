@@ -64,6 +64,12 @@ public class ProductService {
     return ProductGetResponse.from(product);
   }
 
+  public List<ProductGetResponse> getProducts() {
+    return productRepository.findAll().stream()
+        .map(ProductGetResponse::from)
+        .toList();
+  }
+
   private void validateRepresentativeImage(List<ProductImageCreateRequest> images) {
     long representativeCount = images.stream()
         .filter(image -> image.isRepresentative())

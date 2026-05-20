@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.sopt.dto.request.ProductCreateRequest;
 import org.sopt.dto.response.ProductCreateResponse;
@@ -58,6 +59,19 @@ public class ProductController {
       @PathVariable Long productId
   ) {
     ProductGetResponse response = productService.getProduct(productId);
+
+    return ResponseEntity
+        .status(SuccessCode.PRODUCT_FOUND.getStatus())
+        .body(ApiResponseBody.ok(SuccessCode.PRODUCT_FOUND, response));
+  }
+
+  @Operation(summary = "상품 목록 조회", description = "모든 상품 목록을 조회합니다.")
+  @ApiResponses({
+      @ApiResponse(responseCode = "200", description = "상품 목록 조회 성공"),
+  })
+  @GetMapping
+  public ResponseEntity<ApiResponseBody<List<ProductGetResponse>, Void>> getProducts() {
+    List<ProductGetResponse> response = productService.getProducts();
 
     return ResponseEntity
         .status(SuccessCode.PRODUCT_FOUND.getStatus())
